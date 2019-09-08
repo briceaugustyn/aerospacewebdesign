@@ -74,7 +74,7 @@
 	$fname	= filter_var($_POST["fname"], FILTER_SANITIZE_STRING);
 	$lname	= filter_var($_POST["lname"], FILTER_SANITIZE_EMAIL);
 	$website = $_POST["website"];
-	if (!preg_match("~^(?:f|ht)tps?://~i", $website)) $website = "http://" . $website;
+	if (!preg_match("~^(?:f|ht)tps?://~i", $website)) $website = " " . $website;
 	$website = filter_var($website, FILTER_VALIDATE_URL);
 	$email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
 	$message = filter_var($_POST["message"], FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
@@ -98,7 +98,7 @@
 	// Build Message
 	$email_content = "First Name: $fname\n";
 	$email_content .= "Last Name: $lname\n";
-	$email_content .= "Website: $website\n";
+	$email_content .= "Company: $website\n";
 	$email_content .= "Email: $email\n\n";
 	$email_content .= "Message:\n$message\n\n\n";
 	$email_content .= "CLIENT IP:\n".get_client_ip()."\n";
